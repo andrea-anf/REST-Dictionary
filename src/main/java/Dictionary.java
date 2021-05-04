@@ -54,11 +54,14 @@ public class Dictionary {
         return null;
     }
 
-    public Word modifyWord(Word w){
+    public Word modifyDescription(Word word){
+        ArrayList<Word> dictionaryCopy = Dictionary.getInstance().getDictionary();
 
-        //non funziona
-        if(wordList.contains(w)){
-            w.setDefinition(w.getDefinition());
+        for(Word w: dictionaryCopy){
+            if(w.getWord().toLowerCase().equals(word.getWord().toLowerCase())){
+                w.setDefinition(word.getDefinition());
+            }
+
         }
         return null;
     }

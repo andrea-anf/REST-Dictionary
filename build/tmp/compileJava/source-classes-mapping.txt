@@ -2,7 +2,7 @@ StartServer.java
  StartServer
 Word.java
  Word
-DictionaryService.java
- DictionaryService
 Dictionary.java
  Dictionary
+DictionaryService.java
+ DictionaryService

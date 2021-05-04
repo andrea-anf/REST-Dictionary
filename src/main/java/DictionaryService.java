@@ -38,12 +38,12 @@ public class DictionaryService {
     }
 
     @Path("modifyWord")
-    @GET
+    @POST
     @Produces({"application/json", "application/xml"})
     public Response modifyWord(Word word){
         Word w = Dictionary.getInstance().getByWord(word.getWord());
         if(w != null){
-            Dictionary.getInstance().modifyWord(word);
+            Dictionary.getInstance().modifyDescription(word);
             return Response.ok(word).build();
         }
         else{
