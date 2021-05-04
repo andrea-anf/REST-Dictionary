@@ -30,10 +30,6 @@ public class Dictionary {
         return new ArrayList<>(wordList);
     }
 
-    public synchronized void setDictionary(ArrayList<Word> wordList){
-        this.wordList = wordList;
-    }
-
     public synchronized boolean addWord(Word word){
         if(wordList.contains(word)){
             return false;
@@ -44,7 +40,7 @@ public class Dictionary {
         }
     }
 
-    public Word getByWord(String word){
+    public synchronized Word getByWord(String word){
         ArrayList<Word> dictionaryCopy = getDictionary();
 
         for(Word w: dictionaryCopy){
@@ -54,7 +50,7 @@ public class Dictionary {
         return null;
     }
 
-    public Word modifyDescription(Word word){
+    public synchronized Word modifyDescription(Word word){
         ArrayList<Word> dictionaryCopy = Dictionary.getInstance().getDictionary();
 
         for(Word w: dictionaryCopy){
@@ -66,5 +62,16 @@ public class Dictionary {
         return null;
     }
 
+    public synchronized Word deleteWord(Word word){
+        ArrayList<Word> dictionaryCopy = Dictionary.getInstance().getDictionary();
+
+        for(Word w: dictionaryCopy){
+            if(w.getWord().toLowerCase().equals(word.getWord().toLowerCase())){
+                wordList.remove(w);
+            }
+
+        }
+        return null;
+    }
 
 }
